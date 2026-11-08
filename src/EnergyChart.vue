@@ -1,0 +1,11 @@
+<script setup>
+import { computed, useId } from 'vue'
+const gradientId = useId()
+const props=defineProps({mode:{default:'supply'},shifted:Boolean})
+const times=['08:00','10:00','12:00','14:00','18:00','21:00']
+const supply=[18,52,90,88,48,15]
+const before=[75,30,28,30,64,88],after=[28,30,78,85,64,32]
+const points=a=>a.map((v,i)=>`${45+i*100},${190-v*1.55}`).join(' ')
+const area=computed(()=>`45,190 ${points(supply)} 545,190`)
+</script>
+<template><div class="chart"><svg viewBox="0 0 590 235" role="img" :aria-label="mode==='supply'?'Simulated renewable availability, highest at noon and 2 PM':'Illustrative original and proposed demand patterns against renewable availability'"><defs><linearGradient :id="gradientId" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a8d990" stop-opacity=".55"/><stop offset="100%" stop-color="#a8d990" stop-opacity=".03"/></linearGradient></defs><g stroke="currentColor" opacity=".12"><path v-for="y in [40,90,140,190]" :key="y" :d="`M45 ${y}H545`"/></g><text x="45" y="20" class="chart-label">{{mode==='supply'?'Relative availability':'Normalised profiles · illustrative'}}</text><polygon :points="area" :fill="`url(#${gradientId})`"/><polyline :points="points(supply)" fill="none" stroke="#77ad60" stroke-width="3" stroke-linejoin="round"/><template v-if="mode!=='supply'"><polyline :points="points(before)" fill="none" stroke="#c49b70" stroke-width="2.5" stroke-dasharray="6 6"/><polyline v-if="shifted" :points="points(after)" fill="none" stroke="#1b7960" stroke-width="3"/></template><g v-else><circle v-for="(v,i) in supply" :key="i" :cx="45+i*100" :cy="190-v*1.55" r="5" :fill="v>70?'#38865a':v>30?'#d9aa3b':'#cd775f'" stroke="white" stroke-width="2"/></g><text v-for="(t,i) in times" :key="t" :x="45+i*100" y="217" text-anchor="middle" class="chart-label">{{t}}</text></svg><div class="legend"><span><i style="background:#77ad60"></i>Renewable availability</span><template v-if="mode!=='supply'"><span><i style="background:#c49b70"></i>Original demand</span><span v-if="shifted"><i style="background:#1b7960"></i>Proposed demand</span></template><template v-else><span><i style="background:#cd775f"></i>Low</span><span><i style="background:#d9aa3b"></i>Medium</span><span><i style="background:#38865a"></i>High</span></template></div></div></template>
