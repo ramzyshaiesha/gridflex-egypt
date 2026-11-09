@@ -1,6 +1,6 @@
 # GridFlex Egypt
 
-A single-page academic sustainability concept for Group 5, built with Vue 3, Vite, Tailwind CSS 4 and Lucide icons. Seven sections with SVG diagrams, sample charts, a five-step walkthrough, four sector choices and a before/after scheduling toggle.
+A single-page academic sustainability concept for Group 31, built with Vue 3, Vite, Tailwind CSS 4 and Lucide icons. Includes an appliance calculator in the six-step walkthrough, sample charts, four sector choices and a before/after scheduling toggle.
 
 ## Run locally
 

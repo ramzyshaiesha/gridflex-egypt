@@ -1380,3 +1380,32 @@ footer .brand > svg {
     padding-left: 6%;
   }
 }
+
+.steps {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.steps button {
+  min-width: 0;
+  min-height: 76px;
+  padding: 12px;
+  line-height: 1.35;
+}
+
+@media (max-width: 800px) {
+  .steps {
+    grid-auto-flow: column;
+    grid-auto-columns: 152px;
+    grid-template-columns: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding: 2px 2px 9px;
+  }
+
+  .steps button {
+    min-height: 68px;
+    scroll-snap-align: start;
+  }
+}
