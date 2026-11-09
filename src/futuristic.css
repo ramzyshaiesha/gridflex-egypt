@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --ink: #102b25;
-  --forest: #17473b;
-  --moss: #6f9c54;
-  --lime: #d3f36b;
-  --cyan: #8ce2d2;
-  --paper: #f5f7f1;
-  --line: #e2e8de;
+  --ink: #14212d;
+  --forest: #123342;
+  --moss: #16a7a5;
+  --lime: #e6ff5e;
+  --cyan: #62ecd7;
+  --signal: #ff886d;
+  --paper: #f0f4f5;
+  --line: #d8e2e5;
   font-family: 'DM Sans', sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -866,8 +867,8 @@ footer .brand > svg {
 }
 
 @keyframes hero-image-in {
-  from { opacity: .45; transform: scale(1.035); }
-  to { opacity: 1; transform: scale(1); }
+  from { transform: scale(1.035); }
+  to { transform: scale(1); }
 }
 
 @media (max-width: 1100px) {
@@ -935,5 +936,423 @@ footer .brand > svg {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+body,
+.solution-section,
+.sustainability {
+  background-color: var(--paper);
+}
+
+.site-header {
+  color: #eff8fa;
+  background: rgba(10, 21, 31, .96);
+  border-bottom-color: rgba(98, 236, 215, .18);
+}
+
+.site-header .brand,
+.site-header nav,
+.site-header .menu-button {
+  color: #eff8fa;
+}
+
+.site-header .brand-country {
+  color: #9ab0b9;
+}
+
+.site-header nav a:hover {
+  color: var(--cyan);
+}
+
+.site-header .brand-symbol {
+  color: var(--lime);
+  background: #193c48;
+}
+
+.site-header .nav-cta {
+  color: var(--lime);
+  border-color: rgba(98, 236, 215, .35);
+}
+
+.site-header .nav-cta:hover {
+  color: #10212a;
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.hero {
+  background: #07131d;
+}
+
+.hero-photo {
+  opacity: .96;
+  filter: saturate(1.15) contrast(1.04) brightness(.95);
+  mix-blend-mode: normal;
+  object-position: center 56%;
+}
+
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(5, 15, 25, .94) 0%, rgba(7, 24, 35, .78) 39%, rgba(7, 24, 35, .18) 76%, rgba(7, 24, 35, .06) 100%),
+    linear-gradient(0deg, rgba(4, 13, 23, .86), transparent 58%);
+}
+
+.hero::before {
+  opacity: .2;
+  background-image: linear-gradient(rgba(98, 236, 215, .26) 1px, transparent 1px), linear-gradient(90deg, rgba(98, 236, 215, .26) 1px, transparent 1px);
+  background-size: 72px 72px;
+  transform: perspective(900px) rotateY(-17deg) rotateX(8deg) scale(1.32);
+  transform-origin: 78% 53%;
+  mask-image: linear-gradient(90deg, transparent 3%, #000 58%, transparent 100%);
+}
+
+.hero::after {
+  position: absolute;
+  z-index: 1;
+  inset: 34% -8% -42% 34%;
+  pointer-events: none;
+  content: '';
+  opacity: .34;
+  background-image: linear-gradient(rgba(98, 236, 215, .32) 1px, transparent 1px), linear-gradient(90deg, rgba(98, 236, 215, .32) 1px, transparent 1px);
+  background-size: 58px 58px;
+  transform: perspective(540px) rotateX(58deg) rotateZ(-17deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 76%);
+}
+
+.hero .eyebrow {
+  color: #b7d2d7;
+}
+
+.status-dot {
+  background: var(--cyan);
+  box-shadow: 0 0 16px rgba(98, 236, 215, .85);
+}
+
+.hero h1 em {
+  color: var(--lime);
+}
+
+.hero-float {
+  color: #eef9fa;
+  background: rgba(7, 20, 31, .82);
+  border-color: rgba(98, 236, 215, .34);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .4), inset 0 1px rgba(223, 255, 249, .08);
+}
+
+.hero-float .mini-label {
+  color: #b8d5d9;
+}
+
+.hero-float .pill {
+  color: var(--lime);
+  background: rgba(230, 255, 94, .08);
+  border-color: rgba(230, 255, 94, .22);
+}
+
+.energy-flow,
+.energy-flow > svg {
+  color: var(--cyan);
+}
+
+.hero-bottom {
+  border-top-color: rgba(175, 229, 227, .22);
+}
+
+.intro-strip {
+  color: #4a636e;
+  background: #e4ecee;
+  border-bottom-color: #d6e1e4;
+}
+
+.intro-strip svg,
+.eyebrow {
+  color: #168d91;
+}
+
+.section.split {
+  background: #f5f7f7;
+}
+
+.solution-section {
+  background: #e7eef0;
+  border-color: #dbe5e7;
+}
+
+.center-heading {
+  background-color: #0a1a27;
+  background-image:
+    linear-gradient(100deg, rgba(7, 18, 30, .88), rgba(8, 31, 43, .67) 58%, rgba(5, 30, 41, .34)),
+    repeating-linear-gradient(128deg, transparent 0 31px, rgba(98, 236, 215, .12) 32px, transparent 33px 64px),
+    repeating-linear-gradient(0deg, transparent 0 47px, rgba(98, 236, 215, .1) 48px, transparent 49px 96px),
+    url('/singapore-capitaspring.jpg');
+  background-position: center, 0 0, 0 0, center 56%;
+  background-size: auto, 58px 58px, 96px 96px, cover;
+  background-repeat: no-repeat, repeat, repeat, no-repeat;
+  border-color: rgba(98, 236, 215, .27);
+  box-shadow: 0 22px 58px rgba(5, 22, 32, .22);
+}
+
+.center-heading::before {
+  opacity: .22;
+  background-image: linear-gradient(rgba(98, 236, 215, .28) 1px, transparent 1px), linear-gradient(90deg, rgba(98, 236, 215, .28) 1px, transparent 1px);
+}
+
+.center-heading .eyebrow {
+  color: var(--cyan);
+}
+
+.features article,
+.pillar-grid article {
+  background: linear-gradient(145deg, #fff, #f1f6f7);
+  border-color: #d8e4e6;
+  border-top-color: var(--cyan);
+  box-shadow: 0 16px 42px rgba(20, 49, 62, .08);
+}
+
+.features article > svg,
+.pillar-grid article > svg {
+  color: #168f96;
+}
+
+.feature-number {
+  color: #168f96;
+}
+
+.dashboard-side {
+  background: #102d3a;
+}
+
+.dashboard-side .side-item.active {
+  background: rgba(98, 236, 215, .12);
+}
+
+.chart {
+  background: linear-gradient(145deg, #fbfdfd, #edf5f5);
+  border-color: #dbe7e9;
+}
+
+.chart-window {
+  fill: #b6f1e7;
+  stroke: #47c9bb;
+}
+
+.chart-kicker {
+  fill: #285965;
+}
+
+.chart-window-label {
+  fill: #168f96;
+}
+
+.chart-supply-glow {
+  stroke: var(--cyan);
+  stroke-opacity: .3;
+}
+
+.chart-supply-line {
+  stroke: #168f96;
+}
+
+.chart-before-line {
+  stroke: var(--signal);
+}
+
+.chart-after-line {
+  stroke: #334fd1;
+}
+
+.chart-points circle {
+  stroke: #168f96;
+}
+
+.legend-supply { background: #168f96; }
+.legend-before { background: var(--signal); }
+.legend-after { background: #334fd1; }
+
+.steps button.selected {
+  color: #123342;
+  background: #dff4ef;
+  border-color: #54bfb7;
+}
+
+.sector-grid button.selected,
+.info-line {
+  background: #e7f5f3;
+  border-color: #bde2dd;
+}
+
+.sector-grid button > svg,
+.info-line > svg {
+  color: #168f96;
+}
+
+.impact-section {
+  background: #0d2635;
+}
+
+.impact-section .eyebrow {
+  color: var(--cyan);
+}
+
+.impact-metric > strong {
+  color: #147d83;
+}
+
+.impact-benefits svg {
+  color: var(--cyan);
+}
+
+.toggle span.on {
+  background: #168f96;
+}
+
+.sustainability {
+  background: #f0f4f5;
+}
+
+.sdg-card {
+  background: #227b69;
+}
+
+.sustainability-flow {
+  color: #315d69;
+  background: #e2eef0;
+  border-color: #d2e2e5;
+}
+
+.about-section {
+  background: #091a28;
+}
+
+.about-section .eyebrow {
+  color: var(--cyan);
+}
+
+.about-diagram > div > svg,
+.about-diagram > svg {
+  color: var(--lime);
+}
+
+footer {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  color: #dce8eb;
+  background: #06121d;
+}
+
+footer .brand > svg {
+  color: var(--cyan);
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    column-gap: 10px;
+  }
+
+  .site-header .nav-cta,
+  .site-header .menu-button {
+    margin: 0;
+  }
+
+  .site-header .menu-button {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    place-items: center;
+  }
+
+  .impact-grid,
+  .impact-grid > * {
+    min-width: 0;
+  }
+
+  .impact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sustainability {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pillar-grid {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pillar-grid > *,
+  .sustainability > * {
+    min-width: 0;
+  }
+
+  .sustainability-flow {
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    column-gap: 8px;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .site-header .nav-cta {
+    gap: 5px;
+    padding: 7px 8px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .site-header .menu-button {
+    margin: 0;
+  }
+
+  .before-after {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .before-after > div {
+    min-width: 0;
+  }
+
+  .before-after strong {
+    gap: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .before-after strong svg {
+    width: 12px;
+  }
+
+  .pillar-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-shade {
+    background: linear-gradient(90deg, rgba(5, 15, 25, .96), rgba(7, 24, 35, .75)), linear-gradient(0deg, rgba(4, 13, 23, .88), transparent 72%);
+  }
+
+  .hero::after {
+    inset: 43% -40% -36% 12%;
+    opacity: .24;
+  }
+
+  footer {
+    padding-right: 6%;
+    padding-left: 6%;
   }
 }
