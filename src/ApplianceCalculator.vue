@@ -7,11 +7,15 @@ const props = defineProps({ embedded: Boolean })
 const applianceName = ref('')
 const powerKw = ref(2)
 const hoursPerDay = ref(1)
+const preferredStartTime = ref('19:00')
+const canReschedule = ref(true)
+const buildingType = ref('Home')
+const buildingTypes = ['Home', 'University', 'Commercial', 'Industrial']
 const tariff = ref(2)
 const nextId = ref(3)
 const appliances = ref([
-  { id: 1, name: 'Washing machine', powerKw: 2, hoursPerDay: 1 },
-  { id: 2, name: 'Water pump', powerKw: 1, hoursPerDay: 2 },
+  { id: 1, name: 'Washing machine', powerKw: 2, hoursPerDay: 1, preferredStartTime: '19:00', canReschedule: true, buildingType: 'Home' },
+  { id: 2, name: 'Water pump', powerKw: 1, hoursPerDay: 2, preferredStartTime: '19:00', canReschedule: true, buildingType: 'Home' },
 ])
 
 const previewKwh = computed(() => Number(powerKw.value || 0) * Number(hoursPerDay.value || 0))
@@ -32,6 +36,9 @@ function addAppliance() {
     name,
     powerKw: Number(powerKw.value),
     hoursPerDay: Number(hoursPerDay.value),
+    preferredStartTime: preferredStartTime.value,
+    canReschedule: canReschedule.value,
+    buildingType: buildingType.value,
   })
   applianceName.value = ''
 }
@@ -76,6 +83,27 @@ function removeAppliance(id) {
             </label>
           </div>
 
+          <div class="calculator-input-grid">
+            <label class="calculator-field" for="calculator-start-time">
+              Preferred start time
+              <input id="calculator-start-time" v-model="preferredStartTime" type="time" required>
+            </label>
+            <label class="calculator-field" for="calculator-reschedule">
+              Can it be rescheduled?
+              <select id="calculator-reschedule" v-model="canReschedule">
+                <option :value="true">Yes, flexible</option>
+                <option :value="false">No, fixed</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="calculator-field calculator-field-wide" for="calculator-building">
+            Building type
+            <select id="calculator-building" v-model="buildingType">
+              <option v-for="type in buildingTypes" :key="type" :value="type">{{ type }}</option>
+            </select>
+          </label>
+
           <div class="calculator-preview"><Zap :size="17" /><span>Current entry</span><strong>{{ formatEstimate(previewKwh) }} kWh/day</strong></div>
 
           <label class="calculator-field calculator-field-wide" for="calculator-tariff">
@@ -104,7 +132,7 @@ function removeAppliance(id) {
           <div class="calculator-list-heading"><span>REGISTERED APPLIANCES</span><span>kWh / day</span></div>
           <div v-if="appliances.length" class="calculator-list">
             <div v-for="appliance in appliances" :key="appliance.id" class="calculator-row">
-              <div><strong>{{ appliance.name }}</strong><small>{{ appliance.powerKw }} kW × {{ appliance.hoursPerDay }} h/day</small></div>
+              <div><strong>{{ appliance.name }}</strong><small>{{ appliance.powerKw }} kW × {{ appliance.hoursPerDay }} h/day · Starts {{ appliance.preferredStartTime }} · {{ appliance.canReschedule ? 'Flexible' : 'Fixed' }} · {{ appliance.buildingType }}</small></div>
               <strong class="calculator-row-kwh">{{ formatEstimate(appliance.powerKw * appliance.hoursPerDay) }}</strong>
               <button type="button" class="calculator-remove" :aria-label="`Remove ${appliance.name}`" @click="removeAppliance(appliance.id)"><Trash2 :size="16" /></button>
             </div>
@@ -233,7 +261,8 @@ function removeAppliance(id) {
   gap: 12px;
 }
 
-.calculator-field input {
+.calculator-field input,
+.calculator-field select {
   width: 100%;
   min-width: 0;
   height: 44px;
@@ -246,7 +275,8 @@ function removeAppliance(id) {
   font-size: 14px;
 }
 
-.calculator-field input:focus-visible {
+.calculator-field input:focus-visible,
+.calculator-field select:focus-visible {
   outline: 2px solid #21b7ad;
   outline-offset: 2px;
 }
@@ -426,6 +456,7 @@ function removeAppliance(id) {
 .calculator-row > div small {
   color: #9ab0b9;
   font-size: 10px;
+  line-height: 1.45;
 }
 
 .calculator-row-kwh {
